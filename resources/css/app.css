@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../../app/Livewire/**/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Teal — sampled directly from the "nature" half of the Nature Care logo (#3E999A = brand-600). */
+    --color-brand-50: #f3fbfc;
+    --color-brand-100: #dff5f6;
+    --color-brand-200: #c1e6e6;
+    --color-brand-300: #92d2d3;
+    --color-brand-400: #5fbdbf;
+    --color-brand-500: #4caeb0;
+    --color-brand-600: #3e999a;
+    --color-brand-700: #2d7071;
+    --color-brand-800: #245a5b;
+    --color-brand-900: #1c4040;
+
+    /* Coral — sampled directly from the "care" half of the Nature Care logo (#F06B4A = aqua-400). */
+    --color-aqua-50: #fdf4f2;
+    --color-aqua-100: #fbe5e0;
+    --color-aqua-200: #f9c5b8;
+    --color-aqua-300: #f59f89;
+    --color-aqua-400: #f06b4a;
+    --color-aqua-500: #e0532e;
+    --color-aqua-600: #c7431f;
+    --color-aqua-700: #a3350f;
+
+    /* Sand — warm paper/kraft neutral. Background surface only, never an
+       accent: page backgrounds and quiet section fills sit on it, cards
+       stay white on top so depth comes free without new shadow work. */
+    --color-sand-50: #fdfbf7;
+    --color-sand-100: #f7f2ea;
+    --color-sand-200: #ede3d0;
+    --color-sand-300: #ddccac;
+
+    /* Data/label face — prices, size badges, eyebrow labels. Reads like
+       packaging/barcode print. Self-hosted via the same bunny() pipeline
+       as Instrument Sans (see vite.config.js). */
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+
+@layer utilities {
+    .whatsapp-float {
+        animation: whatsapp-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes whatsapp-pulse {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(62, 153, 154, 0.45);
+        }
+        50% {
+            box-shadow: 0 0 0 10px rgba(62, 153, 154, 0);
+        }
+    }
+
+    /* Momentary confirmation bump — cart badge, "Add to Cart" button. transform-only, compositor-friendly. */
+    @media (prefers-reduced-motion: no-preference) {
+        .animate-pop {
+            animation: nc-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    }
+
+    @keyframes nc-pop {
+        0% { transform: scale(1); }
+        45% { transform: scale(1.14); }
+        100% { transform: scale(1); }
+    }
+
+    /* === Wipe-reveal motion family =====================================
+       The signature motif: a clip-path "wipe" — the physical gesture of
+       cleaning a surface — used only at two deliberate moments: the hero
+       load-in, and product-photo hover. Everything else on the page stays
+       quiet by comparison. */
+
+    /* 1. HERO LOAD-IN. Base state (outside the media query) is fully
+       wiped away, so a reduced-motion visitor or pre-JS paint never has
+       hero content stuck hidden underneath the panel. */
+    .hero-wipe-panel {
+        clip-path: inset(0 0 0 100%);
+        -webkit-clip-path: inset(0 0 0 100%);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .hero-wipe-panel {
+            animation: nc-wipe-hero 900ms 150ms cubic-bezier(0.65, 0, 0.35, 1) both;
+        }
+    }
+    @keyframes nc-wipe-hero {
+        0% { clip-path: inset(0 0 0 0); -webkit-clip-path: inset(0 0 0 0); }
+        100% { clip-path: inset(0 0 0 100%); -webkit-clip-path: inset(0 0 0 100%); }
+    }
+
+    /* Companion rise-in for hero copy revealed underneath the wipe. */
+    @media (prefers-reduced-motion: no-preference) {
+        .hero-rise {
+            animation: nc-rise 600ms 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+    }
+    @keyframes nc-rise {
+        0% { opacity: 0; transform: translateY(16px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 2. SCROLL-REVEAL. Used sparingly — homepage section headers and the
+       featured-products row only (see resources/js/motion.js). Gated
+       behind .js-motion (added synchronously in <head>) so content is
+       never hidden for JS-blocked visitors. */
+    .js-motion [data-reveal] {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: var(--reveal-delay, 0ms);
+    }
+    .js-motion [data-reveal].is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .js-motion [data-reveal] {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+
+    /* 3. PRODUCT-CARD HOVER WIPE. Two stacked <img> inside a
+       .product-media wrapper; the secondary photo wipes in from the left
+       on hover/focus-visible of the nearest .group ancestor. */
+    .product-media {
+        position: relative;
+        overflow: hidden;
+    }
+    .product-media__secondary {
+        position: absolute;
+        inset: 0;
+        clip-path: inset(0 0 0 100%);
+        -webkit-clip-path: inset(0 0 0 100%);
+        transition: clip-path 480ms cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .group:hover .product-media__secondary,
+    .group:focus-visible .product-media__secondary {
+        clip-path: inset(0 0 0 0%);
+        -webkit-clip-path: inset(0 0 0 0%);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .product-media__secondary {
+            transition-duration: 0.01ms;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#f0fdf4"/>
+  <g fill="none" stroke="#16a34a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="140" y="90" width="120" height="220" rx="16"/>
+    <path d="M170 90 L170 60 Q170 40 190 40 L210 40 Q230 40 230 60 L230 90"/>
+    <path d="M160 170 Q200 150 240 170"/>
+    <path d="M160 220 Q200 200 240 220"/>
+  </g>
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" fill="#16a34a" text-anchor="middle">Nature Care Products</text>
+</svg>
