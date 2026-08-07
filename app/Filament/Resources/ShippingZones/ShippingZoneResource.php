@@ -22,7 +22,9 @@ class ShippingZoneResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTruck;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Orders';
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

@@ -21,7 +21,9 @@ class OrderResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShoppingCart;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Orders';
+    protected static string|\UnitEnum|null $navigationGroup = 'Sales';
+
+    protected static ?int $navigationSort = 1;
 
     // Orders aren't hand-authored — they're only ever created by the storefront checkout flow.
     public static function canCreate(): bool

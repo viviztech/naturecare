@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PendingCodConfirmations extends TableWidget
 {
+    protected static ?int $sort = 60;
+
     protected static ?string $heading = 'Pending COD Confirmations';
 
     public function table(Table $table): Table

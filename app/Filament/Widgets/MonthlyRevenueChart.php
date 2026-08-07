@@ -8,6 +8,8 @@ use Filament\Widgets\ChartWidget;
 
 class MonthlyRevenueChart extends ChartWidget
 {
+    protected static ?int $sort = 30;
+
     protected ?string $heading = 'Revenue — Last 30 Days';
 
     protected function getData(): array

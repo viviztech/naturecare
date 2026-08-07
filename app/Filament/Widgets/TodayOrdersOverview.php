@@ -14,6 +14,10 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class TodayOrdersOverview extends StatsOverviewWidget
 {
+    protected static ?int $sort = 10;
+
+    protected int|string|array $columnSpan = 'full';
+
     protected function getStats(): array
     {
         $today = now()->startOfDay();

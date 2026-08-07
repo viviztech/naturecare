@@ -22,7 +22,9 @@ class Settings extends Page implements HasForms
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
-    protected static ?int $navigationSort = 99;
+    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+
+    protected static ?int $navigationSort = 2;
 
     public ?array $data = [];
 

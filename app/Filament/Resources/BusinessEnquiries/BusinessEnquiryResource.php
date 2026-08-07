@@ -24,6 +24,8 @@ class BusinessEnquiryResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Enquiries';
 
+    protected static ?int $navigationSort = 1;
+
     public static function getNavigationBadge(): ?string
     {
         return (string) static::getModel()::query()->where('status', 'new')->count();

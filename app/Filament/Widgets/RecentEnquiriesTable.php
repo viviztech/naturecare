@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class RecentEnquiriesTable extends TableWidget
 {
+    protected static ?int $sort = 70;
+
+    protected int|string|array $columnSpan = 'full';
+
     protected static ?string $heading = 'Recent Business Enquiries';
 
     public function table(Table $table): Table

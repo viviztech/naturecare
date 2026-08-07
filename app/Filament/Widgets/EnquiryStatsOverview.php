@@ -9,6 +9,10 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class EnquiryStatsOverview extends StatsOverviewWidget
 {
+    protected static ?int $sort = 20;
+
+    protected int|string|array $columnSpan = 'full';
+
     protected function getStats(): array
     {
         $thisMonth = now()->startOfMonth();

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class LowStockAlert extends TableWidget
 {
+    protected static ?int $sort = 50;
+
     protected static ?string $heading = 'Low Stock Variants';
 
     public function table(Table $table): Table

@@ -8,6 +8,8 @@ use Filament\Widgets\ChartWidget;
 
 class EnquiriesByPartnerTypeChart extends ChartWidget
 {
+    protected static ?int $sort = 40;
+
     protected ?string $heading = 'Enquiries by Partner Type';
 
     protected function getData(): array

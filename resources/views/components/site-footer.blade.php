@@ -28,7 +28,7 @@
             <div>
                 <h3 class="text-sm font-semibold uppercase tracking-wide text-white">Categories</h3>
                 <ul class="mt-3 space-y-2 text-sm text-brand-200">
-                    @foreach (\App\Models\Category::query()->active()->ordered()->get() as $category)
+                    @foreach (\App\Models\Category::query()->active()->ordered()->limit(5)->get() as $category)
                         <li><a href="{{ route('products.index', ['category' => $category->slug]) }}" class="hover:text-white">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
