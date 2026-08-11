@@ -13,8 +13,11 @@ RUN npm run build
 
 
 ########################################
-# 2) PHP dependencies + app (built against the same
-#    extension set as the runtime image, to avoid drift)
+# 2) PHP dependencies + app + compiled extensions.
+#    Extensions are compiled once here and copied (not rebuilt) into the
+#    runtime stage below, since both stages share the same php:8.3-fpm-alpine
+#    base/ABI - this halves the compile time an identical second
+#    docker-php-ext-install in the runtime stage would otherwise cost.
 ########################################
 FROM php:8.3-fpm-alpine AS backend
 
@@ -24,6 +27,7 @@ RUN apk add --no-cache --virtual .build-deps \
         libjpeg-turbo-dev \
         freetype-dev \
         libzip-dev \
+        oniguruma-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j"$(nproc)" \
         pdo_mysql \
@@ -55,11 +59,11 @@ RUN cp .env.example .env \
     && composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction --prefer-dist \
     && rm .env
 
-RUN apk del .build-deps
-
 
 ########################################
-# 3) Runtime: php-fpm + nginx + supervisor in one lean container
+# 3) Runtime: php-fpm + nginx + supervisor in one lean container.
+#    No compiler/toolchain here - just the shared libs the extensions
+#    compiled in "backend" need at load time.
 ########################################
 FROM php:8.3-fpm-alpine AS runtime
 
@@ -70,16 +74,10 @@ RUN apk add --no-cache \
         libjpeg-turbo \
         freetype \
         libzip \
-    && docker-php-ext-install -j"$(nproc)" \
-        pdo_mysql \
-        mbstring \
-        exif \
-        pcntl \
-        bcmath \
-        gd \
-        zip \
-        opcache \
-    && rm -rf /var/cache/apk/*
+        oniguruma
+
+COPY --from=backend /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=backend /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 
 COPY docker/opcache.ini /usr/local/etc/php/conf.d/zz-opcache.ini
 COPY docker/www.conf /usr/local/etc/php-fpm.d/zz-www.conf
