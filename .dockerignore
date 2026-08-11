@@ -1,0 +1,16 @@
+.git
+.github
+.vscode
+.idea
+node_modules
+vendor
+public/build
+public/hot
+public/storage
+.env
+.env.*
+!.env.example
+.phpunit.result.cache
+tests
+phpunit.xml
+npm-debug.log
