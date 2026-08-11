@@ -15,6 +15,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'webhooks/razorpay',
         ]);
+
+        // The app always sits behind Traefik (Coolify's reverse proxy), which
+        // terminates TLS and forwards plain HTTP - without this, Laravel sees
+        // every request as HTTP and generates http:// asset/route URLs even
+        // though APP_URL is https, causing the browser to block them as
+        // mixed content.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
