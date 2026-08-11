@@ -29,7 +29,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libzip-dev \
         oniguruma-dev \
         icu-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+        libwebp-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j"$(nproc)" \
         pdo_mysql \
         mbstring \
@@ -78,7 +79,8 @@ RUN apk add --no-cache \
         libzip \
         oniguruma \
         icu-libs \
-        icu-data-full
+        icu-data-full \
+        libwebp
 
 COPY --from=backend /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 COPY --from=backend /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
