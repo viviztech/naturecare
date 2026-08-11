@@ -57,8 +57,8 @@ COPY --from=frontend /app/public/build ./public/build
 # app, so it runs in this stage with a throwaway .env - this file never
 # reaches the runtime image, Coolify's real env vars are the only ones used.
 RUN cp .env.example .env \
-    && php artisan key:generate --ansi \
     && composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction --prefer-dist \
+    && php artisan key:generate --ansi \
     && rm .env
 
 
