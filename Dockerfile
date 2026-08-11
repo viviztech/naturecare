@@ -28,6 +28,7 @@ RUN apk add --no-cache --virtual .build-deps \
         freetype-dev \
         libzip-dev \
         oniguruma-dev \
+        icu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j"$(nproc)" \
         pdo_mysql \
@@ -37,6 +38,7 @@ RUN apk add --no-cache --virtual .build-deps \
         bcmath \
         gd \
         zip \
+        intl \
         opcache
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -74,7 +76,9 @@ RUN apk add --no-cache \
         libjpeg-turbo \
         freetype \
         libzip \
-        oniguruma
+        oniguruma \
+        icu-libs \
+        icu-data-full
 
 COPY --from=backend /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 COPY --from=backend /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
