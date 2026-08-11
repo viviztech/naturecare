@@ -55,6 +55,7 @@
                 </svg>
             </button>
         </div>
+    </div>
 
     <div id="mobile-nav-panel" x-show="mobileOpen" x-collapse x-cloak class="border-t border-sand-200 lg:hidden">
         <nav class="flex flex-col gap-1 px-4 py-3">
