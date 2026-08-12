@@ -11,14 +11,24 @@
     <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
 
     {{-- Open Graph --}}
+    @php $shareImage = $ogImage ?? asset('images/og-default.jpg'); @endphp
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Nature Care Products">
     <meta property="og:title" content="{{ $metaTitle ?? 'Nature Care Products | Floor Cleaner, Dish Wash & Home Care' }}">
     <meta property="og:description" content="{{ $metaDescription ?? 'Nature-inspired, safe-for-family home & personal care products at affordable prices.' }}">
     <meta property="og:url" content="{{ $canonical ?? url()->current() }}">
-    @if (!empty($ogImage))
-        <meta property="og:image" content="{{ $ogImage }}">
-    @endif
+    <meta property="og:image" content="{{ $shareImage }}">
+    @unless (isset($ogImage))
+        {{-- Only the site-wide default is guaranteed to be exactly 1200x630; per-page images (e.g. product photos) vary --}}
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+    @endunless
+
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $metaTitle ?? 'Nature Care Products | Floor Cleaner, Dish Wash & Home Care' }}">
+    <meta name="twitter:description" content="{{ $metaDescription ?? 'Nature-inspired, safe-for-family home & personal care products at affordable prices.' }}">
+    <meta name="twitter:image" content="{{ $shareImage }}">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="{{ asset('images/nature-care-mark.png') }}">

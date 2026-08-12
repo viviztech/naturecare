@@ -1,6 +1,7 @@
 <x-layouts.app
     :meta-title="$product->metaTitle()"
     :meta-description="$product->metaDescription()"
+    :og-image="$product->hasMedia(\App\Models\Product::MEDIA_COLLECTION) ? $product->getFirstMediaUrl(\App\Models\Product::MEDIA_COLLECTION, 'large') : null"
 >
     @push('schema')
         <script type="application/ld+json">
