@@ -126,7 +126,7 @@ class Product extends Model implements HasMedia
 
     public function whatsappEnquiryUrl(): string
     {
-        $number = config('naturecare.whatsapp_number');
+        $number = Setting::whatsappNumber();
         $message = "Hi Nature Care, I'm interested in {$this->name}. Please share more details.";
 
         return "https://wa.me/{$number}?text=".rawurlencode($message);

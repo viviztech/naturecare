@@ -1,5 +1,5 @@
 @php
-    $whatsapp = \App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number'));
+    $whatsapp = \App\Models\Setting::whatsappNumber();
     $cartCount = app(\App\Services\CartService::class)->count();
 @endphp
 

@@ -25,6 +25,16 @@ class Setting extends Model
         Cache::forget(self::CACHE_KEY);
     }
 
+    /**
+     * wa.me links and schema.org telephone fields need digits only - the
+     * admin Settings field doesn't enforce a format, so callers can't trust
+     * the raw stored value (e.g. "+91 90920 86200" breaks a wa.me link).
+     */
+    public static function whatsappNumber(): string
+    {
+        return preg_replace('/\D/', '', static::get('site_whatsapp', config('naturecare.whatsapp_number')));
+    }
+
     public static function allCached(): array
     {
         return Cache::rememberForever(self::CACHE_KEY, function () {

@@ -1,5 +1,5 @@
 @php
-    $whatsapp = \App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number'));
+    $whatsapp = \App\Models\Setting::whatsappNumber();
     $message = rawurlencode("Hi Nature Care, I'd like to know more about your products.");
 @endphp
 

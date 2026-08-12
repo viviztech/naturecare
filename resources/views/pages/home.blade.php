@@ -12,7 +12,7 @@
                 'foundingDate' => '2018',
                 'contactPoint' => [
                     '@type' => 'ContactPoint',
-                    'telephone' => '+91-'.substr(preg_replace('/\D/', '', \App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number'))), -10),
+                    'telephone' => '+91-'.substr(\App\Models\Setting::whatsappNumber(), -10),
                     'contactType' => 'customer service',
                     'areaServed' => 'IN',
                     'availableLanguage' => ['English'],

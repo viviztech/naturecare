@@ -1,6 +1,6 @@
 @php
     $phone = \App\Models\Setting::get('site_phone', '+91 99999 99999');
-    $whatsapp = \App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number'));
+    $whatsapp = \App\Models\Setting::whatsappNumber();
     $email = \App\Models\Setting::get('site_email', 'enquiry@naturecareplus.com');
     $address = \App\Models\Setting::get('site_address', 'Chennai, Tamil Nadu, India');
 @endphp
