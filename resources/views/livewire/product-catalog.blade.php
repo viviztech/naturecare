@@ -9,7 +9,7 @@
                 autocomplete="off"
                 wire:model.live.debounce.400ms="search"
                 placeholder="Search products…"
-                class="w-full rounded-lg border-gray-300 pl-10 focus:border-brand-500 focus:ring-brand-500"
+                class="w-full rounded-lg border border-gray-300 pl-10 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8" />

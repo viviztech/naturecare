@@ -83,17 +83,17 @@
         <form wire:submit="goToAddress" class="space-y-5 rounded-2xl border border-sand-200 bg-white p-6 shadow-sm sm:p-8">
             <div>
                 <label for="checkout-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
-                <input id="checkout-name" type="text" autocomplete="name" wire:model="name" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                <input id="checkout-name" type="text" autocomplete="name" wire:model="name" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 @error('name') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
             <div>
                 <label for="checkout-mobile" class="block text-sm font-medium text-gray-700">Mobile Number *</label>
-                <input id="checkout-mobile" type="tel" inputmode="numeric" autocomplete="tel" wire:model="mobile" maxlength="10" placeholder="10-digit mobile number…" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                <input id="checkout-mobile" type="tel" inputmode="numeric" autocomplete="tel" wire:model="mobile" maxlength="10" placeholder="10-digit mobile number…" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 @error('mobile') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
             <div>
                 <label for="checkout-email" class="block text-sm font-medium text-gray-700">Email (optional)</label>
-                <input id="checkout-email" type="email" autocomplete="email" spellcheck="false" wire:model="email" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                <input id="checkout-email" type="email" autocomplete="email" spellcheck="false" wire:model="email" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 @error('email') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
             <button type="submit" wire:loading.attr="disabled" wire:target="goToAddress" class="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-700 disabled:opacity-60">
@@ -108,22 +108,22 @@
         <form wire:submit="goToPayment" class="space-y-5 rounded-2xl border border-sand-200 bg-white p-6 shadow-sm sm:p-8">
             <div>
                 <label for="checkout-line1" class="block text-sm font-medium text-gray-700">Address Line 1 *</label>
-                <input id="checkout-line1" type="text" autocomplete="address-line1" wire:model="line1" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                <input id="checkout-line1" type="text" autocomplete="address-line1" wire:model="line1" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 @error('line1') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
             <div>
                 <label for="checkout-line2" class="block text-sm font-medium text-gray-700">Address Line 2</label>
-                <input id="checkout-line2" type="text" autocomplete="address-line2" wire:model="line2" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                <input id="checkout-line2" type="text" autocomplete="address-line2" wire:model="line2" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
                 <div>
                     <label for="checkout-city" class="block text-sm font-medium text-gray-700">City / Town *</label>
-                    <input id="checkout-city" type="text" autocomplete="address-level2" wire:model="city" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input id="checkout-city" type="text" autocomplete="address-level2" wire:model="city" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('city') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label for="checkout-pincode" class="block text-sm font-medium text-gray-700">Pincode *</label>
-                    <input id="checkout-pincode" type="text" inputmode="numeric" autocomplete="postal-code" wire:model="pincode" maxlength="6" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input id="checkout-pincode" type="text" inputmode="numeric" autocomplete="postal-code" wire:model="pincode" maxlength="6" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('pincode') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
@@ -152,12 +152,12 @@
                 <div class="mt-2 space-y-2">
                     @if ($codAvailable)
                         <label class="flex items-center gap-3 rounded-lg border border-sand-200 p-3 has-checked:border-brand-500 has-checked:bg-brand-50">
-                            <input type="radio" wire:model="paymentMethod" value="cod" class="text-brand-600 focus:ring-brand-500">
+                            <input type="radio" wire:model="paymentMethod" value="cod" class="text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <span>Cash on Delivery</span>
                         </label>
                     @endif
                     <label class="flex items-center gap-3 rounded-lg border border-sand-200 p-3 has-checked:border-brand-500 has-checked:bg-brand-50">
-                        <input type="radio" wire:model="paymentMethod" value="razorpay" class="text-brand-600 focus:ring-brand-500">
+                        <input type="radio" wire:model="paymentMethod" value="razorpay" class="text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <span>Pay Online (Cards / UPI / Netbanking)</span>
                     </label>
                 </div>

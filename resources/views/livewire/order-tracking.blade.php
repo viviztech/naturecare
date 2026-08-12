@@ -9,13 +9,13 @@
 
         <div>
             <label class="block text-sm font-medium text-gray-700">Mobile Number *</label>
-            <input type="tel" wire:model="mobile" maxlength="10" wire:loading.attr="disabled" wire:target="track" class="mt-1 w-full rounded-lg border-gray-300 font-mono focus:border-brand-500 focus:ring-brand-500">
+            <input type="tel" wire:model="mobile" maxlength="10" wire:loading.attr="disabled" wire:target="track" class="mt-1 w-full rounded-lg border border-gray-300 font-mono focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
             @error('mobile') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-medium text-gray-700">Order Number *</label>
-            <input type="text" wire:model="orderNumber" placeholder="NC-202608-0001" wire:loading.attr="disabled" wire:target="track" class="mt-1 w-full rounded-lg border-gray-300 font-mono focus:border-brand-500 focus:ring-brand-500">
+            <input type="text" wire:model="orderNumber" placeholder="NC-202608-0001" wire:loading.attr="disabled" wire:target="track" class="mt-1 w-full rounded-lg border border-gray-300 font-mono focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
             @error('orderNumber') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
         </div>
 

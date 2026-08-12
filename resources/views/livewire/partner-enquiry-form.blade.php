@@ -62,31 +62,31 @@
                 <div class="grid gap-5 sm:grid-cols-2">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Full Name *</label>
-                        <input type="text" wire:model="name" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="text" wire:model="name" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('name') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Firm / Shop Name *</label>
-                        <input type="text" wire:model="firm_name" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="text" wire:model="firm_name" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('firm_name') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Mobile Number (WhatsApp) *</label>
-                        <input type="tel" wire:model="mobile" maxlength="10" placeholder="10-digit mobile number" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="tel" wire:model="mobile" maxlength="10" placeholder="10-digit mobile number" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('mobile') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Email (optional)</label>
-                        <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('email') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">State *</label>
-                        <select wire:model="state" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <select wire:model="state" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="">Select State</option>
                             @foreach ($indianStates as $stateOption)
                                 <option value="{{ $stateOption }}">{{ $stateOption }}</option>
@@ -97,19 +97,19 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">District *</label>
-                        <input type="text" wire:model="district" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="text" wire:model="district" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('district') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">City / Town *</label>
-                        <input type="text" wire:model="city" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <input type="text" wire:model="city" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         @error('city') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Investment Capacity *</label>
-                        <select wire:model="investment_range" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <select wire:model="investment_range" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="">Select Range</option>
                             @foreach ($investmentRanges as $value => $label)
                                 <option value="{{ $value }}">{{ $label }}</option>
@@ -120,7 +120,7 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Years in Current Business *</label>
-                        <select wire:model="years_in_business" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <select wire:model="years_in_business" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="">Select</option>
                             @foreach ($yearsInBusinessRanges as $value => $label)
                                 <option value="{{ $value }}">{{ $label }}</option>
@@ -131,7 +131,7 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Current Business Type *</label>
-                        <select wire:model="current_business" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                        <select wire:model="current_business" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="">Select</option>
                             @foreach ($businessTypes as $value => $label)
                                 <option value="{{ $value }}">{{ $label }}</option>
@@ -145,11 +145,11 @@
                             <label class="block text-sm font-medium text-gray-700">Godown / Storage Space Available? *</label>
                             <div class="mt-2 flex gap-4">
                                 <label class="inline-flex items-center gap-2">
-                                    <input type="radio" wire:model="has_godown" value="1" class="text-brand-600 focus:ring-brand-500">
+                                    <input type="radio" wire:model="has_godown" value="1" class="text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500">
                                     Yes
                                 </label>
                                 <label class="inline-flex items-center gap-2">
-                                    <input type="radio" wire:model="has_godown" value="0" class="text-brand-600 focus:ring-brand-500">
+                                    <input type="radio" wire:model="has_godown" value="0" class="text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500">
                                     No
                                 </label>
                             </div>
@@ -160,7 +160,7 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Message (optional)</label>
-                    <textarea wire:model="message" rows="3" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500"></textarea>
+                    <textarea wire:model="message" rows="3" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
                     @error('message') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
 

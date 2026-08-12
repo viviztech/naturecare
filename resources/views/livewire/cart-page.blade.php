@@ -52,7 +52,7 @@
                 <div class="rounded-2xl border border-sand-200 bg-white p-4">
                     <label for="cart-pincode" class="block text-sm font-medium text-gray-700">Check delivery availability</label>
                     <div class="mt-2 flex gap-2">
-                        <input id="cart-pincode" type="text" inputmode="numeric" autocomplete="postal-code" wire:model="pincode" maxlength="6" placeholder="Enter pincode…" wire:loading.attr="disabled" wire:target="checkPincode" class="w-40 rounded-lg border-gray-300 font-mono text-sm focus:border-brand-500 focus:ring-brand-500">
+                        <input id="cart-pincode" type="text" inputmode="numeric" autocomplete="postal-code" wire:model="pincode" maxlength="6" placeholder="Enter pincode…" wire:loading.attr="disabled" wire:target="checkPincode" class="w-40 rounded-lg border border-gray-300 font-mono text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <button type="button" wire:click="checkPincode" wire:loading.attr="disabled" wire:target="checkPincode" class="flex items-center gap-1.5 rounded-lg bg-aqua-600 px-4 py-2 text-sm font-semibold text-white hover:bg-aqua-700 disabled:opacity-60">
                             <span wire:loading.remove wire:target="checkPincode">Check</span>
                             <span wire:loading wire:target="checkPincode" class="inline-flex items-center gap-1.5"><x-ui.spinner class="h-3.5 w-3.5" /> Checking…</span>
@@ -76,7 +76,7 @@
 
                 <div class="mt-3 flex gap-2">
                     <label for="coupon-code" class="sr-only">Coupon code</label>
-                    <input id="coupon-code" type="text" autocomplete="off" wire:model="couponCode" placeholder="Coupon code" wire:loading.attr="disabled" wire:target="applyCoupon" class="flex-1 rounded-lg border-gray-300 text-sm uppercase focus:border-brand-500 focus:ring-brand-500">
+                    <input id="coupon-code" type="text" autocomplete="off" wire:model="couponCode" placeholder="Coupon code" wire:loading.attr="disabled" wire:target="applyCoupon" class="flex-1 rounded-lg border border-gray-300 text-sm uppercase focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @if ($cart?->coupon_code)
                         <button type="button" wire:click="removeCoupon" wire:loading.attr="disabled" wire:target="removeCoupon" class="flex items-center gap-1.5 rounded-lg border border-sand-300 px-3 py-2 text-sm hover:bg-sand-100 disabled:opacity-60">
                             <span wire:loading.remove wire:target="removeCoupon">Remove</span>

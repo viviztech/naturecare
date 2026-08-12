@@ -23,32 +23,32 @@
             <div class="grid gap-5 sm:grid-cols-2">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Full Name *</label>
-                    <input type="text" wire:model="name" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input type="text" wire:model="name" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('name') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Mobile Number *</label>
-                    <input type="tel" wire:model="mobile" maxlength="10" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input type="tel" wire:model="mobile" maxlength="10" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('mobile') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Email (optional)</label>
-                    <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input type="email" wire:model="email" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('email') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Subject</label>
-                    <input type="text" wire:model="subject" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500">
+                    <input type="text" wire:model="subject" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">
                     @error('subject') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                 </div>
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Message *</label>
-                <textarea wire:model="message" rows="4" class="mt-1 w-full rounded-lg border-gray-300 focus:border-brand-500 focus:ring-brand-500"></textarea>
+                <textarea wire:model="message" rows="4" class="mt-1 w-full rounded-lg border border-gray-300 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
                 @error('message') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
 
