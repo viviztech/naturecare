@@ -5,14 +5,14 @@
     @push('schema')
         <script type="application/ld+json">
             {!! json_encode([
-                '@context' => 'https://schema.org',
+                '@@context' => 'https://schema.org',
                 '@type' => 'Organization',
                 'name' => 'Nature Care Products',
                 'url' => 'https://naturecareplus.com',
                 'foundingDate' => '2018',
                 'contactPoint' => [
                     '@type' => 'ContactPoint',
-                    'telephone' => '+91-'.\App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number')),
+                    'telephone' => '+91-'.substr(preg_replace('/\D/', '', \App\Models\Setting::get('site_whatsapp', config('naturecare.whatsapp_number'))), -10),
                     'contactType' => 'customer service',
                     'areaServed' => 'IN',
                     'availableLanguage' => ['English'],
